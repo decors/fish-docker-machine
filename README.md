@@ -2,7 +2,7 @@
 
 docker-machine completion for fish shell
 
-## Installation
+## Install
 
 ```fish
 curl -L https://raw.github.com/decors/fish-docker-machine/master/completions/docker-machine.fish \
