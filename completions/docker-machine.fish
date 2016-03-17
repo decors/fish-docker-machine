@@ -1,21 +1,21 @@
 function __fish_docker_machine_no_command --description 'Test if docker-machine has yet to be given the main command'
-  set -l cmd (commandline -opc)
-  test (count $cmd) -eq 1
+    set -l cmd (commandline -opc)
+    test (count $cmd) -eq 1
 end
 
 function __fish_docker_machine_using_command
-  set -l cmd (commandline -opc)
-  set -q cmd[2]; and test "$argv[1]" = $cmd[2]
+    set -l cmd (commandline -opc)
+    set -q cmd[2]; and test "$argv[1]" = $cmd[2]
 end
 
 function __fish_docker_machine_help_topics
-  for c in active config create env inspect ip kill ls regenerate-certs restart rm ssh scp start status stop upgrade url version help
-    printf "%s\thelp topic\n" $c
-  end
+    for c in active config create env inspect ip kill ls regenerate-certs restart rm ssh scp start status stop upgrade url version help
+        printf "%s\thelp topic\n" $c
+    end
 end
 
 function __fish_docker_machine_machines --description 'Lists all available docker machines'
-  command docker-machine ls | sed 1d | awk '{print sprintf("%s\t%s %s", $1, $3, $4);}'
+    command docker-machine ls | sed 1d | awk '{print sprintf("%s\t%s %s", $1, $3, $4);}'
 end
 
 complete -c docker-machine -f -n '__fish_docker_machine_no_command' -a 'active' -d 'Print which machine is active'
